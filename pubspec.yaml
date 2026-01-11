@@ -41,6 +41,8 @@ dependencies:
   speech_to_text: ^7.3.0
   permission_handler: ^12.0.1
   intl: ^0.18.1
+  http: ^1.2.0
+  image_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +54,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.jpeg"
+  adaptive_icon_background: "#002b5c"
+  adaptive_icon_foreground: "assets/icon/icon.jpeg"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

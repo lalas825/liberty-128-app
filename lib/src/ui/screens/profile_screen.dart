@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import '../../services/civic_info_service.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -18,6 +21,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool _notificationsEnabled = true;
   bool _darkModeEnabled = false;
   bool _isLoading = true;
+  
+  // Image State
+  String? _profileImagePath;
+  final ImagePicker _picker = ImagePicker();
+
+  // Civic Info State
+  final TextEditingController _zipController = TextEditingController();
+  final TextEditingController _governorController = TextEditingController();
+  final TextEditingController _senator1Controller = TextEditingController();
+  final TextEditingController _senator2Controller = TextEditingController();
+  final TextEditingController _repController = TextEditingController();
+  bool _isSearchingCivic = false;
 
   @override
   void initState() {
@@ -39,7 +54,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _voiceSpeed = prefs.getDouble('voice_speed') ?? 1.0;
       _notificationsEnabled = prefs.getBool('notifications_enabled') ?? true;
       _darkModeEnabled = prefs.getBool('dark_mode_enabled') ?? false;
+      _profileImagePath = prefs.getString('profile_image_path');
       
+
+      
+      _zipController.text = prefs.getString('civic_zip') ?? "";
+      _governorController.text = prefs.getString('civic_governor') ?? "";
+      _senator1Controller.text = prefs.getString('civic_senator1') ?? "";
+      _senator2Controller.text = prefs.getString('civic_senator2') ?? "";
+      _repController.text = prefs.getString('civic_rep') ?? "";
+
       _isLoading = false;
     });
   }
@@ -48,8 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<void> _saveName(String value) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('user_name', value);
-    // Trigger rebuild to update Avatar
-    setState(() {});
+    setState(() {}); // Trigger rebuild to update Avatar if relying on initials
   }
 
   Future<void> _saveExamDate(DateTime date) async {
@@ -82,36 +105,97 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       _darkModeEnabled = value;
     });
-    // Note: To make this effectively change the app theme, 
-    // we would need a ThemeProvider or callback to main.dart.
-    // For now, it just saves the preference.
+    // Note: Theme change requires top-level callback in real app
     ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Theme preference saved (Refresh needed)")));
   }
+  
+  // Image Picker Logic
+  Future<void> _pickImage() async {
+    try {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+      if (image != null) {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('profile_image_path', image.path);
+        setState(() {
+          _profileImagePath = image.path;
+        });
+      }
+    } catch (e) {
+      debugPrint("Error picking image: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Failed to pick image")),
+      );
+    }
+    }
 
+
+  // Civic Info Logic
+  Future<void> _fetchCivicInfo() async {
+    final zip = _zipController.text.trim();
+    if (zip.isEmpty || zip.length != 5) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please enter a valid 5-digit Zip Code"))
+      );
+      return;
+    }
+
+    setState(() => _isSearchingCivic = true);
+
+    try {
+      final data = await CivicInfoService.fetchRepresentatives(zip);
+      
+      final governor = data['governor'] ?? "Not Found";
+      final senators = data['senators'] as List<dynamic>? ?? [];
+      final rep = data['representative'] ?? "Not Found";
+
+      setState(() {
+        _governorController.text = governor;
+        _senator1Controller.text = senators.isNotEmpty ? senators[0] : "Not Found";
+        _senator2Controller.text = senators.length > 1 ? senators[1] : "Not Found";
+        _repController.text = rep;
+      });
+
+      // Save to Prefs
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('civic_zip', zip);
+      await prefs.setString('civic_governor', _governorController.text);
+      await prefs.setString('civic_senator1', _senator1Controller.text);
+      await prefs.setString('civic_senator2', _senator2Controller.text);
+      await prefs.setString('civic_rep', _repController.text);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Officials Updated!"), backgroundColor: Colors.green)
+        );
+      }
+
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Error: $e"), backgroundColor: Colors.red)
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _isSearchingCivic = false);
+    }
+  }
+
+  // Reset Logic
   Future<void> _resetProgress() async {
     final prefs = await SharedPreferences.getInstance();
-    // Clear Score / Stats related keys but KEEP Profile settings
-    await prefs.remove('voice_seen_ids');
-    await prefs.remove('voice_seen_ids_2008');
-    await prefs.remove('stats_data');
-    await prefs.remove('incorrect_ids');
-    
-    // Optional: Clear specific keys instead of clear() to avoid losing name/date
+    // CLEAR EVERYTHING
+    await prefs.clear();
     
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("All quiz progress has been reset!"),
-          backgroundColor: Colors.redAccent,
-        )
-      );
+      // Navigate to Onboarding and remove back stack
+      Navigator.pushNamedAndRemoveUntil(context, '/onboarding', (route) => false);
     }
   }
 
   // Logic: Calculate Days Until Exam
   String _getDaysUntilExam() {
-    if (_examDate == null) return "";
+    if (_examDate == null) return "Set Exam Date";
     final now = DateTime.now();
     // Reset time to midnight for accurate day comparison
     final today = DateTime(now.year, now.month, now.day);
@@ -132,6 +216,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final Color federalBlue = const Color(0xFF112D50);
     final Color sectionTitleColor = Colors.grey.shade700;
     
+    // Avatar Image Provider
+    ImageProvider? avatarImage;
+    if (_profileImagePath != null) {
+      final file = File(_profileImagePath!);
+      if (file.existsSync()) {
+        avatarImage = FileImage(file);
+      }
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
@@ -151,12 +244,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
              Center(
                child: Column(
                  children: [
-                   CircleAvatar(
-                     radius: 50,
-                     backgroundColor: federalBlue.withOpacity(0.1),
-                     child: Text(
-                       _nameController.text.isNotEmpty ? _nameController.text[0].toUpperCase() : "U",
-                       style: GoogleFonts.publicSans(fontSize: 40, color: federalBlue, fontWeight: FontWeight.bold),
+                   GestureDetector(
+                     onTap: _pickImage,
+                     child: Stack(
+                       children: [
+                         CircleAvatar(
+                           radius: 50,
+                           backgroundColor: federalBlue.withOpacity(0.1),
+                           backgroundImage: avatarImage,
+                           child: avatarImage == null
+                               ? Text(
+                                   _nameController.text.isNotEmpty ? _nameController.text[0].toUpperCase() : "U",
+                                   style: GoogleFonts.publicSans(fontSize: 40, color: federalBlue, fontWeight: FontWeight.bold),
+                                 )
+                               : null, // Show nothing if image is there
+                         ),
+                         // Camera Icon Overlay
+                         Positioned(
+                           bottom: 0,
+                           right: 0,
+                           child: Container(
+                             padding: const EdgeInsets.all(4),
+                             decoration: const BoxDecoration(
+                               color: Colors.white,
+                               shape: BoxShape.circle,
+                               boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4)]
+                             ),
+                             child: Icon(Icons.camera_alt, color: federalBlue, size: 20),
+                           ),
+                         )
+                       ],
                      ),
                    ),
                    const SizedBox(height: 16),
@@ -170,38 +287,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
                        border: InputBorder.none,
                        hintStyle: TextStyle(color: Colors.grey)
                      ),
-                     onChanged: _saveName, // Auto-save on type
+                     onChanged: _saveName, 
                    ),
                  ],
                ),
              ),
              const SizedBox(height: 32),
-
-             // --- COUNTDOWN WIDGET ---
-             if (_examDate != null)
-               Container(
-                 width: double.infinity,
-                 padding: const EdgeInsets.all(16),
-                 margin: const EdgeInsets.only(bottom: 32),
-                 decoration: BoxDecoration(
-                   gradient: LinearGradient(colors: [federalBlue, federalBlue.withOpacity(0.8)]),
-                   borderRadius: BorderRadius.circular(16),
-                   boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 10, offset: Offset(0, 5))]
-                 ),
-                 child: Column(
-                   children: [
-                      Text(
-                        _getDaysUntilExam(),
-                        style: GoogleFonts.publicSans(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+             
+             // --- MY LOCAL GOVERNMENT ---
+             Text("MY LOCAL GOVERNMENT", style: GoogleFonts.publicSans(color: sectionTitleColor, fontWeight: FontWeight.bold, fontSize: 13, letterSpacing: 1.2)),
+             const SizedBox(height: 8),
+             Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12), side: BorderSide(color: Colors.grey.shade200)),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    children: [
+                      // Zip Search Row
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: _zipController,
+                              keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                labelText: "Zip Code",
+                                hintText: "Enter Zip",
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: federalBlue,
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            child: IconButton(
+                              icon: _isSearchingCivic 
+                                  ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
+                                  : const Icon(Icons.search, color: Colors.white),
+                              onPressed: _isSearchingCivic ? null : _fetchCivicInfo,
+                            ),
+                          )
+                        ],
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        DateFormat.yMMMMd().format(_examDate!),
-                        style: GoogleFonts.publicSans(color: Colors.white70, fontSize: 14),
-                      )
-                   ],
-                 ),
-               ),
+                      const SizedBox(height: 16),
+                      // Fields
+                      _buildCivicField("My Governor", _governorController),
+                      const SizedBox(height: 12),
+                      _buildCivicField("My Senator 1", _senator1Controller),
+                      const SizedBox(height: 12),
+                      _buildCivicField("My Senator 2", _senator2Controller),
+                      const SizedBox(height: 12),
+                      _buildCivicField("My Representative", _repController),
+                    ],
+                  ),
+                ),
+             ),
+             const SizedBox(height: 32),
 
              // --- EXAM DETAILS ---
              Text("EXAM DETAILS", style: GoogleFonts.publicSans(color: sectionTitleColor, fontWeight: FontWeight.bold, fontSize: 13, letterSpacing: 1.2)),
@@ -298,15 +444,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                      context: context, 
                      builder: (context) => AlertDialog(
                        title: const Text("Reset All Progress?"),
-                       content: const Text("This will delete all quiz scores and history. Your name and interview date will be kept."),
+                       content: const Text("This will delete ALL data (name, date, photos, scores) and restart the app."),
                        actions: [
                          TextButton(onPressed: () => Navigator.pop(context), child: const Text("Cancel")),
                          TextButton(
                            onPressed: () {
+                             Navigator.pop(context); // Close dialog
                              _resetProgress();
-                             Navigator.pop(context);
                            }, 
-                           child: const Text("Reset", style: TextStyle(color: Colors.red))
+                           child: const Text("Reset Everything", style: TextStyle(color: Colors.red))
                           ),
                        ],
                      )
@@ -325,6 +471,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
            ],
         ),
       ),
+    );
+  }
+
+  Widget _buildCivicField(String label, TextEditingController controller) {
+    return TextField(
+      controller: controller,
+      readOnly: true,
+      decoration: InputDecoration(
+        labelText: label,
+        filled: true,
+        fillColor: Colors.grey.shade50,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      ),
+      style: GoogleFonts.publicSans(fontWeight: FontWeight.w600, color: const Color(0xFF112D50)),
     );
   }
 }

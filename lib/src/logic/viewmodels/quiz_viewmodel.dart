@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/models/civics_question_model.dart';
-import '../../services/stats_service.dart'; // Import Service
+import '../../services/stats_service.dart';
+import '../../services/smart_distractor_service.dart';
 
 class QuizViewModel extends ChangeNotifier {
   List<CivicsQuestion> _fullQuestionBank = [];
   List<CivicsQuestion> _quizQuestions = [];
   
-  // Storage for options so they don't reshuffle on every notify
-  final Map<String, List<String>> _optionsMap = {}; 
+  // Storage: QuestionID -> { 'options': List<String>, 'correctText': String }
+  final Map<String, Map<String, dynamic>> _quizDataMap = {}; 
   
   int _currentQuestionIndex = 0;
   int _score = 0;
@@ -30,11 +31,13 @@ class QuizViewModel extends ChangeNotifier {
   Map<String, dynamic> get currentQuestion {
     if (_quizQuestions.isEmpty) return {};
     final q = _quizQuestions[_currentQuestionIndex];
+    final data = _quizDataMap[q.id];
     
     return {
       'question': q.questionText,
-      'answer': q.acceptableAnswers.isNotEmpty ? q.acceptableAnswers.first : '',
-      'options': _optionsMap[q.id] ?? [],
+      // Use the generated composite answer text (e.g. "A and B") as the source of truth
+      'answer': data?['correctText'] ?? '',
+      'options': data?['options'] ?? [],
     };
   }
 
@@ -68,8 +71,7 @@ class QuizViewModel extends ChangeNotifier {
     if (_fullQuestionBank.isEmpty) return;
     
     _isLoading = true;
-    // notifyListeners(); // Optional: don't flicker if already loading
-
+    
     // 1. Load Seen IDs based on version
     final prefs = await SharedPreferences.getInstance();
     final bool is2025 = prefs.getBool('is_2025_version') ?? true;
@@ -90,7 +92,7 @@ class QuizViewModel extends ChangeNotifier {
       selected = unseen.take(20).toList();
     } else {
       // Not enough unseen. Take all remaining unseen, then reset and fill.
-      selected.addAll(unseen); // Add the last few
+      selected.addAll(unseen); 
       
       int needed = 20 - unseen.length;
       
@@ -112,10 +114,10 @@ class QuizViewModel extends ChangeNotifier {
     }
     await prefs.setStringList(seenKey, newSeenSet.toList());
 
-    // 5. Generate Options
-    _optionsMap.clear();
+    // 5. Generate Options using Smart Logic
+    _quizDataMap.clear();
     for (var q in _quizQuestions) {
-      _optionsMap[q.id] = _generateOptionsFor(q, _fullQuestionBank);
+      _quizDataMap[q.id] = _generateOptionsAndAnswerFor(q, _fullQuestionBank);
     }
 
     _currentQuestionIndex = 0;
@@ -127,35 +129,26 @@ class QuizViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Generate A, B, C, D (1 Correct + 3 Random Distractors)
-  List<String> _generateOptionsFor(CivicsQuestion correctQ, List<CivicsQuestion> allQuestions) {
-    if (correctQ.acceptableAnswers.isEmpty) return ["Error"];
+  // Generate Options + Correct Answer Text using Service
+  Map<String, dynamic> _generateOptionsAndAnswerFor(CivicsQuestion correctQ, List<CivicsQuestion> allQuestions) {
+    if (correctQ.acceptableAnswers.isEmpty) return {'options': [], 'correctText': ''};
     
-    final correctAnswer = correctQ.acceptableAnswers.first;
-    final Set<String> options = {correctAnswer};
-    final random = Random();
-
-    // Attempt to add 3 unique distractors
-    int attempts = 0;
-    while (options.length < 4 && attempts < 100) {
-      final randomQ = allQuestions[random.nextInt(allQuestions.length)];
-      if (randomQ.id != correctQ.id && randomQ.acceptableAnswers.isNotEmpty) {
-        options.add(randomQ.acceptableAnswers.first);
-      }
-      attempts++;
-    }
-
-    // Convert to list and shuffle
-    final optionsList = options.toList();
-    optionsList.shuffle(random);
-    return optionsList;
+    final optionsFull = SmartDistractorService.generateOptions(correctQ, allQuestions);
+    
+    // Find the text of the item marked isCorrect
+    final correctText = optionsFull.firstWhere((o) => o['isCorrect'] as bool)['text'] as String;
+    final optionsText = optionsFull.map((o) => o['text'] as String).toList();
+    
+    return {
+      'options': optionsText,
+      'correctText': correctText
+    };
   }
 
   // Logic: Handle Answer Selection
   void answerQuestion(String answer) {
     if (_isAnswered) return; 
     
-    // Safety check just in case
     if (_quizQuestions.isEmpty || _currentQuestionIndex >= _quizQuestions.length) return;
 
     _selectedAnswer = answer;
@@ -163,13 +156,11 @@ class QuizViewModel extends ChangeNotifier {
 
     final currentQ = _quizQuestions[_currentQuestionIndex];
     
-    // Simple string match check
+    // Check against the generated Correct Answer Text
     if (answer == currentQuestion['answer']) {
       _score++;
-      // If they get it right, remove from incorrect list (remedial logic)
       StatsService.removeIncorrect(currentQ.id);
     } else {
-      // If wrong, add to incorrect list
       StatsService.addIncorrect(currentQ.id);
     }
 

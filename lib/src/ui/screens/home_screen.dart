@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
+import 'dart:convert';
+import 'dart:math';
 import '../../services/stats_service.dart';
+import '../../services/daily_challenge_service.dart';
+import '../../data/models/civics_question_model.dart';
 import 'quiz_screen.dart';
 import 'review_errors_screen.dart';
 import 'study_screen.dart';
 import 'profile_screen.dart';
-import 'n400_vocab_screen.dart'; // Import for N-400
+import 'n400_vocab_screen.dart';
+import '../widgets/daily_challenge_modal.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,6 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
   String _statusLabel = "Start Practicing";
   bool _isPassed = false;
   Color _statusColor = Colors.grey;
+  
+  // Profile Data for Dashboard
+  String _userName = "";
+  DateTime? _examDate;
+  
+  // Daily Challenge State
+  bool _isChallengeCompleted = false;
+  int _challengeStreak = 0;
 
   final List<Widget> _screens = [
      Container(), // Placeholder for Dashboard (index 0)
@@ -30,19 +44,37 @@ class _HomeScreenState extends State<HomeScreen> {
      const ProfileScreen(),
   ];
 
-  String _userName = "";
-
   @override
   void initState() {
     super.initState();
-    _loadStats();
-    _loadProfile();
+    _initializeApp();
+  }
+
+  Future<void> _initializeApp() async {
+    await _loadStats();
+    await _loadProfile();
+    await _loadChallengeState();
+  }
+  
+  Future<void> _loadChallengeState() async {
+    await DailyChallengeService.checkStreak();
+    final state = await DailyChallengeService.getChallengeState();
+    if (mounted) {
+      setState(() {
+        _challengeStreak = state['streak'];
+        _isChallengeCompleted = state['isCompleted'];
+      });
+    }
   }
 
   Future<void> _loadProfile() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       _userName = prefs.getString('user_name') ?? "";
+      final dateStr = prefs.getString('exam_date');
+      if (dateStr != null) {
+        _examDate = DateTime.tryParse(dateStr);
+      }
     });
   }
 
@@ -54,6 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
     if (!mounted) return;
     setState(() {
       _userName = prefs.getString('user_name') ?? "";
+      final dateStr = prefs.getString('exam_date');
+      if (dateStr != null) {
+        _examDate = DateTime.tryParse(dateStr);
+      } else {
+        _examDate = null;
+      }
+
       _passProbability = stats['average_score'];
       _isPassed = stats['passed'];
       
@@ -67,6 +106,55 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  // --- DAILY CHALLENGE LOGIC ---
+  
+  // --- DAILY CHALLENGE LOGIC ---
+  
+  Future<void> _startDailyChallenge() async {
+    if (_isChallengeCompleted) return;
+    
+    try {
+        final String jsonString = await DefaultAssetBundle.of(context).loadString('assets/civics_questions_2025.json');
+        final List<dynamic> jsonList = jsonDecode(jsonString); // Requires dart:convert
+        final List<CivicsQuestion> allQuestions = jsonList.map((json) => CivicsQuestion.fromJson(json)).toList();
+        
+        if (!mounted) return;
+        
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+          builder: (context) {
+            return DailyChallengeModal(
+              allQuestions: allQuestions,
+              onChallengeCompleted: () {
+                 _loadChallengeState(); // Refresh UI on completion
+                 ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Challenge Completed! Streak Updated.", style: GoogleFonts.publicSans(fontWeight: FontWeight.bold)),
+                      backgroundColor: const Color(0xFF00C4B4),
+                    )
+                 );
+              },
+            );
+          }
+        );
+
+    } catch (e) {
+      debugPrint("Error loading challenge: $e");
+    }
+  }
+  
+  // _handleChallengeResult is no longer needed in HomeScreen as logic is in Modal
+  // But removing it would break the file if I replaced _startDailyChallenge only partially.
+  // The ReplacementContent above replaces the entire block UP TO _onTabTapped potentially?
+  // I need to be careful with the range.
+  
+  // The tool instructions say: "StartLine to EndLine".
+  // I will target the logic block specifically.
+
+
   void _onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -74,7 +162,22 @@ class _HomeScreenState extends State<HomeScreen> {
     // Reload stats/name when switching back to home
     if (index == 0) {
       _loadStats();
+      _loadProfile();
+      _loadChallengeState();
     }
+  }
+
+  // Logic: Calculate Days Until Exam
+  String _getDaysUntilExam() {
+    if (_examDate == null) return "Set Exam Date";
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final exam = DateTime(_examDate!.year, _examDate!.month, _examDate!.day);
+    final difference = exam.difference(today).inDays;
+
+    if (difference < 0) return "Interview Passed!";
+    if (difference == 0) return "Interview Today!";
+    return "$difference Days Until Interview";
   }
 
   @override
@@ -155,6 +258,50 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             const SizedBox(height: 30),
+
+            // COUNTDOWN TIMER CARD
+            if (_examDate != null)
+              GestureDetector(
+                onTap: () {
+                   // Navigate to Profile Tab (Index 2)
+                   _onTabTapped(2);
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(bottom: 24),
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [federalBlue, federalBlue.withOpacity(0.85)]),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                            color: federalBlue.withOpacity(0.3),
+                            blurRadius: 10,
+                            offset: const Offset(0, 5))
+                      ]),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.calendar_today, color: Colors.white.withOpacity(0.9)),
+                          const SizedBox(width: 10),
+                          Text(_getDaysUntilExam(),
+                              style: GoogleFonts.publicSans(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      Text("Tap to edit date", 
+                         style: GoogleFonts.publicSans(color: Colors.white70, fontSize: 12))
+                    ],
+                  ),
+                ),
+              ),
+
+
 
             // PASS PROBABILITY (Dynamic)
             Container(
@@ -282,6 +429,67 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ],
+            ),
+            const SizedBox(height: 30),
+
+            // DAILY CHALLENGE CARD
+            GestureDetector(
+              onTap: _startDailyChallenge,
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                margin: const EdgeInsets.only(bottom: 30),
+                decoration: BoxDecoration(
+                    color: _isChallengeCompleted ? const Color(0xFFE0F2F1) : const Color(0xFFFFF3E0),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: _isChallengeCompleted ? libertyGreen : Colors.orangeAccent,
+                      width: 1.5,
+                    ),
+                    boxShadow: const [
+                      BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4))
+                    ]),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: _isChallengeCompleted ? libertyGreen.withOpacity(0.2) : Colors.orangeAccent.withOpacity(0.2),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        _isChallengeCompleted ? Icons.check_circle : Icons.local_fire_department,
+                        color: _isChallengeCompleted ? libertyGreen : Colors.deepOrange,
+                        size: 32,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _isChallengeCompleted ? "Great Job!" : "Daily Challenge",
+                          style: GoogleFonts.publicSans(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: federalBlue),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          _isChallengeCompleted 
+                             ? "Streak: $_challengeStreak Days" 
+                             : "Keep your streak alive!",
+                          style: GoogleFonts.publicSans(
+                              color: Colors.grey.shade700, fontSize: 14),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    if (!_isChallengeCompleted)
+                      const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey)
+                  ],
+                ),
+              ),
             ),
           ],
         ),
