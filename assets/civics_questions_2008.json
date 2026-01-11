@@ -1,0 +1,1636 @@
+[
+    {
+        "id": "2008_q01",
+        "question_text": "What is the supreme law of the land?",
+        "acceptable_answers": [
+            "The Constitution"
+        ],
+        "voice_keywords": [
+            "Constitution"
+        ],
+        "explanation_why": "It establishes the basic principles of the government.",
+        "audio_url": "assets/audio/2008_q01.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q02",
+        "question_text": "What does the Constitution do?",
+        "acceptable_answers": [
+            "Sets up the government",
+            "Defines the government",
+            "Protects basic rights of Americans"
+        ],
+        "voice_keywords": [
+            "Sets",
+            "Defines",
+            "Protects"
+        ],
+        "explanation_why": "It creates the framework for the federal government.",
+        "audio_url": "assets/audio/2008_q02.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q03",
+        "question_text": "The idea of self-government is in the first three words of the Constitution. What are these words?",
+        "acceptable_answers": [
+            "We the People"
+        ],
+        "voice_keywords": [
+            "We",
+            "People"
+        ],
+        "explanation_why": "It means the government receives its power from the people.",
+        "audio_url": "assets/audio/2008_q03.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q04",
+        "question_text": "What is an amendment?",
+        "acceptable_answers": [
+            "A change (to the Constitution)",
+            "An addition (to the Constitution)"
+        ],
+        "voice_keywords": [
+            "Change",
+            "Addition"
+        ],
+        "explanation_why": "It allows the Constitution to adapt over time.",
+        "audio_url": "assets/audio/2008_q04.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q05",
+        "question_text": "What do we call the first ten amendments to the Constitution?",
+        "acceptable_answers": [
+            "The Bill of Rights"
+        ],
+        "voice_keywords": [
+            "Bill",
+            "Rights"
+        ],
+        "explanation_why": "They list specific prohibitions on governmental power.",
+        "audio_url": "assets/audio/2008_q05.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q06",
+        "question_text": "What is one right or freedom from the First Amendment?",
+        "acceptable_answers": [
+            "Speech",
+            "Religion",
+            "Assembly",
+            "Press",
+            "Petition the government"
+        ],
+        "voice_keywords": [
+            "Speech",
+            "Religion",
+            "Assembly",
+            "Press",
+            "Petition"
+        ],
+        "explanation_why": "Fundamental liberties guaranteed to all.",
+        "audio_url": "assets/audio/2008_q06.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q07",
+        "question_text": "How many amendments does the Constitution have?",
+        "acceptable_answers": [
+            "Twenty-seven (27)"
+        ],
+        "voice_keywords": [
+            "27",
+            "Twenty-seven"
+        ],
+        "explanation_why": "There have been 27 changes to the document.",
+        "audio_url": "assets/audio/2008_q07.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q08",
+        "question_text": "What did the Declaration of Independence do?",
+        "acceptable_answers": [
+            "Announced our independence (from Great Britain)",
+            "Declared our independence (from Great Britain)",
+            "Said that the United States is free (from Great Britain)"
+        ],
+        "voice_keywords": [
+            "Announced",
+            "Declared",
+            "Independence",
+            "Free"
+        ],
+        "explanation_why": "It formally separated the colonies from Britain.",
+        "audio_url": "assets/audio/2008_q08.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q09",
+        "question_text": "What are two rights in the Declaration of Independence?",
+        "acceptable_answers": [
+            "Life",
+            "Liberty",
+            "Pursuit of happiness"
+        ],
+        "voice_keywords": [
+            "Life",
+            "Liberty",
+            "Happiness"
+        ],
+        "explanation_why": "These are considered unalienable rights.",
+        "audio_url": "assets/audio/2008_q09.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q10",
+        "question_text": "What is freedom of religion?",
+        "acceptable_answers": [
+            "You can practice any religion, or not practice a religion."
+        ],
+        "voice_keywords": [
+            "Practice",
+            "Any",
+            "Religion"
+        ],
+        "explanation_why": "The government cannot establish a religion or prohibit its free exercise.",
+        "audio_url": "assets/audio/2008_q10.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q11",
+        "question_text": "What is the economic system in the United States?",
+        "acceptable_answers": [
+            "Capitalist economy",
+            "Market economy"
+        ],
+        "voice_keywords": [
+            "Capitalist",
+            "Market"
+        ],
+        "explanation_why": "Private individuals and businesses control trade and industry.",
+        "audio_url": "assets/audio/2008_q11.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q12",
+        "question_text": "What is the 'rule of law'?",
+        "acceptable_answers": [
+            "Everyone must follow the law",
+            "Leaders must obey the law",
+            "Government must obey the law",
+            "No one is above the law"
+        ],
+        "voice_keywords": [
+            "Follow",
+            "Obey",
+            "Above"
+        ],
+        "explanation_why": "Ensures justice and equality.",
+        "audio_url": "assets/audio/2008_q12.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q13",
+        "question_text": "Name one branch or part of the government.",
+        "acceptable_answers": [
+            "Congress",
+            "Legislative",
+            "President",
+            "Executive",
+            "The courts",
+            "Judicial"
+        ],
+        "voice_keywords": [
+            "Congress",
+            "President",
+            "Courts"
+        ],
+        "explanation_why": "Powers are separated among these branches.",
+        "audio_url": "assets/audio/2008_q13.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q14",
+        "question_text": "What stops one branch of government from becoming too powerful?",
+        "acceptable_answers": [
+            "Checks and balances",
+            "Separation of powers"
+        ],
+        "voice_keywords": [
+            "Checks",
+            "Balances",
+            "Separation"
+        ],
+        "explanation_why": "Prevents tyranny.",
+        "audio_url": "assets/audio/2008_q14.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q15",
+        "question_text": "Who is in charge of the executive branch?",
+        "acceptable_answers": [
+            "The President"
+        ],
+        "voice_keywords": [
+            "President"
+        ],
+        "explanation_why": "They enforce the laws.",
+        "audio_url": "assets/audio/2008_q15.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q16",
+        "question_text": "Who makes federal laws?",
+        "acceptable_answers": [
+            "Congress",
+            "Senate and House (of Representatives)",
+            "(U.S. or national) legislature"
+        ],
+        "voice_keywords": [
+            "Congress",
+            "Senate",
+            "House"
+        ],
+        "explanation_why": "The legislative branch creates laws.",
+        "audio_url": "assets/audio/2008_q16.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q17",
+        "question_text": "What are the two parts of the U.S. Congress?",
+        "acceptable_answers": [
+            "The Senate and House (of Representatives)"
+        ],
+        "voice_keywords": [
+            "Senate",
+            "House"
+        ],
+        "explanation_why": "It is a bicameral legislature.",
+        "audio_url": "assets/audio/2008_q17.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q18",
+        "question_text": "How many U.S. Senators are there?",
+        "acceptable_answers": [
+            "One hundred (100)"
+        ],
+        "voice_keywords": [
+            "100",
+            "Hundred"
+        ],
+        "explanation_why": "Two per state.",
+        "audio_url": "assets/audio/2008_q18.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q19",
+        "question_text": "We elect a U.S. Senator for how many years?",
+        "acceptable_answers": [
+            "Six (6)"
+        ],
+        "voice_keywords": [
+            "6",
+            "Six"
+        ],
+        "explanation_why": "They have staggered terms.",
+        "audio_url": "assets/audio/2008_q19.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q20",
+        "question_text": "Who is one of your state's U.S. Senators now?",
+        "acceptable_answers": [
+            "Answers will vary"
+        ],
+        "voice_keywords": [
+            "Varies"
+        ],
+        "explanation_why": "Depends on the state you live in.",
+        "audio_url": "assets/audio/2008_q20.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q21",
+        "question_text": "The House of Representatives has how many voting members?",
+        "acceptable_answers": [
+            "Four hundred thirty-five (435)"
+        ],
+        "voice_keywords": [
+            "435",
+            "Four hundred thirty-five"
+        ],
+        "explanation_why": "Based on state populations.",
+        "audio_url": "assets/audio/2008_q21.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q22",
+        "question_text": "We elect a U.S. Representative for how many years?",
+        "acceptable_answers": [
+            "Two (2)"
+        ],
+        "voice_keywords": [
+            "2",
+            "Two"
+        ],
+        "explanation_why": "Elected every two years.",
+        "audio_url": "assets/audio/2008_q22.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q23",
+        "question_text": "Name your U.S. Representative.",
+        "acceptable_answers": [
+            "Answers will vary"
+        ],
+        "voice_keywords": [
+            "Varies"
+        ],
+        "explanation_why": "Depends on your congressional district.",
+        "audio_url": "assets/audio/2008_q23.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q24",
+        "question_text": "Who does a U.S. Senator represent?",
+        "acceptable_answers": [
+            "All people of the state"
+        ],
+        "voice_keywords": [
+            "All",
+            "People",
+            "State"
+        ],
+        "explanation_why": "They represent the entire state.",
+        "audio_url": "assets/audio/2008_q24.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q25",
+        "question_text": "Why do some states have more Representatives than other states?",
+        "acceptable_answers": [
+            "(Because of) the state's population",
+            "(Because of) more people",
+            "(Because) some states have more people"
+        ],
+        "voice_keywords": [
+            "Population",
+            "People"
+        ],
+        "explanation_why": "Representation is based on population.",
+        "audio_url": "assets/audio/2008_q25.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q26",
+        "question_text": "We elect a President for how many years?",
+        "acceptable_answers": [
+            "Four (4)"
+        ],
+        "voice_keywords": [
+            "4",
+            "Four"
+        ],
+        "explanation_why": "One term is four years.",
+        "audio_url": "assets/audio/2008_q26.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q27",
+        "question_text": "In what month do we vote for President?",
+        "acceptable_answers": [
+            "November"
+        ],
+        "voice_keywords": [
+            "November"
+        ],
+        "explanation_why": "General elections are held in November.",
+        "audio_url": "assets/audio/2008_q27.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q28",
+        "question_text": "What is the name of the President of the United States now?",
+        "acceptable_answers": [
+            "Donald Trump"
+        ],
+        "voice_keywords": [
+            "Donald",
+            "Trump"
+        ],
+        "explanation_why": "As of Jan 2025.",
+        "audio_url": "assets/audio/2008_q28.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q29",
+        "question_text": "What is the name of the Vice President of the United States now?",
+        "acceptable_answers": [
+            "JD Vance"
+        ],
+        "voice_keywords": [
+            "JD",
+            "Vance"
+        ],
+        "explanation_why": "As of Jan 2025.",
+        "audio_url": "assets/audio/2008_q29.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q30",
+        "question_text": "If the President can no longer serve, who becomes President?",
+        "acceptable_answers": [
+            "The Vice President"
+        ],
+        "voice_keywords": [
+            "Vice",
+            "President"
+        ],
+        "explanation_why": "First in line of succession.",
+        "audio_url": "assets/audio/2008_q30.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q31",
+        "question_text": "If both the President and the Vice President can no longer serve, who becomes President?",
+        "acceptable_answers": [
+            "The Speaker of the House"
+        ],
+        "voice_keywords": [
+            "Speaker",
+            "House"
+        ],
+        "explanation_why": "Next in line of succession.",
+        "audio_url": "assets/audio/2008_q31.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q32",
+        "question_text": "Who is the Commander in Chief of the military?",
+        "acceptable_answers": [
+            "The President"
+        ],
+        "voice_keywords": [
+            "President"
+        ],
+        "explanation_why": "Civilian leader of the armed forces.",
+        "audio_url": "assets/audio/2008_q32.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q33",
+        "question_text": "Who signs bills to become laws?",
+        "acceptable_answers": [
+            "The President"
+        ],
+        "voice_keywords": [
+            "President"
+        ],
+        "explanation_why": "Part of the legislative process.",
+        "audio_url": "assets/audio/2008_q33.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q34",
+        "question_text": "Who vetoes bills?",
+        "acceptable_answers": [
+            "The President"
+        ],
+        "voice_keywords": [
+            "President"
+        ],
+        "explanation_why": "A check on Congress.",
+        "audio_url": "assets/audio/2008_q34.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q35",
+        "question_text": "What does the President's Cabinet do?",
+        "acceptable_answers": [
+            "Advises the President"
+        ],
+        "voice_keywords": [
+            "Advises"
+        ],
+        "explanation_why": "They head executive departments.",
+        "audio_url": "assets/audio/2008_q35.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q36",
+        "question_text": "What are two Cabinet-level positions?",
+        "acceptable_answers": [
+            "Secretary of Agriculture",
+            "Secretary of Commerce",
+            "Secretary of Defense",
+            "Secretary of Education",
+            "Secretary of Energy",
+            "Secretary of Health and Human Services",
+            "Secretary of Homeland Security",
+            "Secretary of Housing and Urban Development",
+            "Secretary of the Interior",
+            "Secretary of Labor",
+            "Secretary of State",
+            "Secretary of Transportation",
+            "Secretary of the Treasury",
+            "Secretary of Veterans Affairs",
+            "Attorney General",
+            "Vice President"
+        ],
+        "voice_keywords": [
+            "Secretary",
+            "Attorney",
+            "General",
+            "Vice",
+            "President"
+        ],
+        "explanation_why": "There are many departments.",
+        "audio_url": "assets/audio/2008_q36.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q37",
+        "question_text": "What does the judicial branch do?",
+        "acceptable_answers": [
+            "Reviews laws",
+            "Explains laws",
+            "Resolves disputes (disagreements)",
+            "Decides if a law goes against the Constitution"
+        ],
+        "voice_keywords": [
+            "Reviews",
+            "Explains",
+            "Resolves",
+            "Decides"
+        ],
+        "explanation_why": "Interprets the law.",
+        "audio_url": "assets/audio/2008_q37.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q38",
+        "question_text": "What is the highest court in the United States?",
+        "acceptable_answers": [
+            "The Supreme Court"
+        ],
+        "voice_keywords": [
+            "Supreme",
+            "Court"
+        ],
+        "explanation_why": "The final authority on federal law.",
+        "audio_url": "assets/audio/2008_q38.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q39",
+        "question_text": "How many justices are on the Supreme Court?",
+        "acceptable_answers": [
+            "Nine (9)"
+        ],
+        "voice_keywords": [
+            "9",
+            "Nine"
+        ],
+        "explanation_why": "Current number is 9.",
+        "audio_url": "assets/audio/2008_q39.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q40",
+        "question_text": "Who is the Chief Justice of the United States now?",
+        "acceptable_answers": [
+            "John Roberts (Jr.)"
+        ],
+        "voice_keywords": [
+            "John",
+            "Roberts"
+        ],
+        "explanation_why": "Presides over the Supreme Court.",
+        "audio_url": "assets/audio/2008_q40.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q41",
+        "question_text": "Under our Constitution, some powers belong to the federal government. What is one power of the federal government?",
+        "acceptable_answers": [
+            "To print money",
+            "To declare war",
+            "To create an army",
+            "To make treaties"
+        ],
+        "voice_keywords": [
+            "Print",
+            "Money",
+            "War",
+            "Army",
+            "Treaties"
+        ],
+        "explanation_why": "Enumerated powers.",
+        "audio_url": "assets/audio/2008_q41.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q42",
+        "question_text": "Under our Constitution, some powers belong to the states. What is one power of the states?",
+        "acceptable_answers": [
+            "Provide schooling and education",
+            "Provide protection (police)",
+            "Provide safety (fire departments)",
+            "Give a driver's license",
+            "Approve zoning and land use"
+        ],
+        "voice_keywords": [
+            "Schooling",
+            "Education",
+            "Police",
+            "License"
+        ],
+        "explanation_why": "Reserved powers.",
+        "audio_url": "assets/audio/2008_q42.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q43",
+        "question_text": "Who is the Governor of your state now?",
+        "acceptable_answers": [
+            "Answers will vary"
+        ],
+        "voice_keywords": [
+            "Varies"
+        ],
+        "explanation_why": "State executive leader.",
+        "audio_url": "assets/audio/2008_q43.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q44",
+        "question_text": "What is the capital of your state?",
+        "acceptable_answers": [
+            "Answers will vary"
+        ],
+        "voice_keywords": [
+            "Varies"
+        ],
+        "explanation_why": "Seat of state government.",
+        "audio_url": "assets/audio/2008_q44.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q45",
+        "question_text": "What are the two major political parties in the United States?",
+        "acceptable_answers": [
+            "Democratic and Republican"
+        ],
+        "voice_keywords": [
+            "Democratic",
+            "Republican"
+        ],
+        "explanation_why": "The dominant parties.",
+        "audio_url": "assets/audio/2008_q45.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q46",
+        "question_text": "What is the political party of the President now?",
+        "acceptable_answers": [
+            "Republican (Party)"
+        ],
+        "voice_keywords": [
+            "Republican"
+        ],
+        "explanation_why": "Donald Trump is a Republican.",
+        "audio_url": "assets/audio/2008_q46.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q47",
+        "question_text": "What is the name of the Speaker of the House of Representatives now?",
+        "acceptable_answers": [
+            "Mike Johnson"
+        ],
+        "voice_keywords": [
+            "Mike",
+            "Johnson"
+        ],
+        "explanation_why": "Leader of the House.",
+        "audio_url": "assets/audio/2008_q47.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q48",
+        "question_text": "There are four amendments to the Constitution about who can vote. Describe one of them.",
+        "acceptable_answers": [
+            "Citizens eighteen (18) and older can vote",
+            "You don't have to pay a poll tax to vote",
+            "Any citizen can vote (women and men can vote)",
+            "A male citizen of any race can vote"
+        ],
+        "voice_keywords": [
+            "18",
+            "Eighteen",
+            "Poll",
+            "Tax",
+            "Citizen",
+            "Race"
+        ],
+        "explanation_why": "Voting rights have expanded over time.",
+        "audio_url": "assets/audio/2008_q48.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q49",
+        "question_text": "What is one responsibility that is only for United States citizens?",
+        "acceptable_answers": [
+            "Serve on a jury",
+            "Vote in a federal election"
+        ],
+        "voice_keywords": [
+            "Jury",
+            "Vote"
+        ],
+        "explanation_why": "Civic duties for citizens.",
+        "audio_url": "assets/audio/2008_q49.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q50",
+        "question_text": "Name one right only for United States citizens.",
+        "acceptable_answers": [
+            "Vote in a federal election",
+            "Run for federal office"
+        ],
+        "voice_keywords": [
+            "Vote",
+            "Run"
+        ],
+        "explanation_why": "Privileges of citizenship.",
+        "audio_url": "assets/audio/2008_q50.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q51",
+        "question_text": "What are two rights of everyone living in the United States?",
+        "acceptable_answers": [
+            "Freedom of expression",
+            "Freedom of speech",
+            "Freedom of assembly",
+            "Freedom to petition the government",
+            "Freedom of religion",
+            "The right to bear arms"
+        ],
+        "voice_keywords": [
+            "Expression",
+            "Speech",
+            "Assembly",
+            "Petition",
+            "Religion",
+            "Arms"
+        ],
+        "explanation_why": "Fundamental human rights protected by law.",
+        "audio_url": "assets/audio/2008_q51.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q52",
+        "question_text": "What do we show loyalty to when we say the Pledge of Allegiance?",
+        "acceptable_answers": [
+            "The United States",
+            "The flag"
+        ],
+        "voice_keywords": [
+            "United States",
+            "Flag"
+        ],
+        "explanation_why": "A promise of loyalty.",
+        "audio_url": "assets/audio/2008_q52.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q53",
+        "question_text": "What is one promise you make when you become a United States citizen?",
+        "acceptable_answers": [
+            "Give up loyalty to other countries",
+            "Defend the Constitution and laws of the United States",
+            "Obey the laws of the United States",
+            "Serve in the U.S. military (if needed)",
+            "Serve (do important work for) the nation (if needed)",
+            "Be loyal to the United States"
+        ],
+        "voice_keywords": [
+            "Loyalty",
+            "Defend",
+            "Obey",
+            "Serve"
+        ],
+        "explanation_why": "Oath of Allegiance.",
+        "audio_url": "assets/audio/2008_q53.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q54",
+        "question_text": "How old do citizens have to be to vote for President?",
+        "acceptable_answers": [
+            "Eighteen (18) and older"
+        ],
+        "voice_keywords": [
+            "18",
+            "Eighteen"
+        ],
+        "explanation_why": "Universal suffrage age.",
+        "audio_url": "assets/audio/2008_q54.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q55",
+        "question_text": "What are two ways that Americans can participate in their democracy?",
+        "acceptable_answers": [
+            "Vote",
+            "Join a political party",
+            "Help with a campaign",
+            "Join a civic group",
+            "Join a community group",
+            "Give an elected official your opinion on an issue",
+            "Call Senators and Representatives",
+            "Publicly support or oppose an issue or policy",
+            "Run for office",
+            "Write to a newspaper"
+        ],
+        "voice_keywords": [
+            "Vote",
+            "Join",
+            "Help",
+            "Run"
+        ],
+        "explanation_why": "Civic engagement.",
+        "audio_url": "assets/audio/2008_q55.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q56",
+        "question_text": "When is the last day you can send in federal income tax forms?",
+        "acceptable_answers": [
+            "April 15"
+        ],
+        "voice_keywords": [
+            "April",
+            "15"
+        ],
+        "explanation_why": "Tax Day.",
+        "audio_url": "assets/audio/2008_q56.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q57",
+        "question_text": "When must all men register for the Selective Service?",
+        "acceptable_answers": [
+            "At age eighteen (18)",
+            "Between eighteen (18) and twenty-six (26)"
+        ],
+        "voice_keywords": [
+            "18",
+            "Eighteen",
+            "26",
+            "Twenty-six"
+        ],
+        "explanation_why": "Draft registration.",
+        "audio_url": "assets/audio/2008_q57.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q58",
+        "question_text": "What is one reason colonists came to America?",
+        "acceptable_answers": [
+            "Freedom",
+            "Political liberty",
+            "Religious freedom",
+            "Economic opportunity",
+            "Practice their religion",
+            "Escape persecution"
+        ],
+        "voice_keywords": [
+            "Freedom",
+            "Liberty",
+            "Opportunity",
+            "Persecution"
+        ],
+        "explanation_why": "Seeking a better life.",
+        "audio_url": "assets/audio/2008_q58.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q59",
+        "question_text": "Who lived in America before the Europeans arrived?",
+        "acceptable_answers": [
+            "American Indians",
+            "Native Americans"
+        ],
+        "voice_keywords": [
+            "Indians",
+            "Native"
+        ],
+        "explanation_why": "Indigenous peoples.",
+        "audio_url": "assets/audio/2008_q59.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q60",
+        "question_text": "What group of people was taken to America and sold as slaves?",
+        "acceptable_answers": [
+            "Africans",
+            "People from Africa"
+        ],
+        "voice_keywords": [
+            "Africans",
+            "Africa"
+        ],
+        "explanation_why": "Forced labor.",
+        "audio_url": "assets/audio/2008_q60.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q61",
+        "question_text": "Why did the colonists fight the British?",
+        "acceptable_answers": [
+            "Because of high taxes (taxation without representation)",
+            "Because the British army stayed in their houses (boarding, quartering)",
+            "Because they didn't have self-government"
+        ],
+        "voice_keywords": [
+            "Taxes",
+            "Army",
+            "Self-government"
+        ],
+        "explanation_why": "Grievances against the Crown.",
+        "audio_url": "assets/audio/2008_q61.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q62",
+        "question_text": "Who wrote the Declaration of Independence?",
+        "acceptable_answers": [
+            "Thomas Jefferson"
+        ],
+        "voice_keywords": [
+            "Thomas",
+            "Jefferson"
+        ],
+        "explanation_why": "Principal author.",
+        "audio_url": "assets/audio/2008_q62.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q63",
+        "question_text": "When was the Declaration of Independence adopted?",
+        "acceptable_answers": [
+            "July 4, 1776"
+        ],
+        "voice_keywords": [
+            "July",
+            "4",
+            "1776"
+        ],
+        "explanation_why": "Birth of the nation.",
+        "audio_url": "assets/audio/2008_q63.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q64",
+        "question_text": "There were 13 original states. Name three.",
+        "acceptable_answers": [
+            "New Hampshire",
+            "Massachusetts",
+            "Rhode Island",
+            "Connecticut",
+            "New York",
+            "New Jersey",
+            "Pennsylvania",
+            "Delaware",
+            "Maryland",
+            "Virginia",
+            "North Carolina",
+            "South Carolina",
+            "Georgia"
+        ],
+        "voice_keywords": [
+            "New",
+            "York",
+            "Jersey",
+            "Carolina"
+        ],
+        "explanation_why": "The original colonies.",
+        "audio_url": "assets/audio/2008_q64.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q65",
+        "question_text": "What happened at the Constitutional Convention?",
+        "acceptable_answers": [
+            "The Constitution was written",
+            "The Founding Fathers wrote the Constitution"
+        ],
+        "voice_keywords": [
+            "Constitution",
+            "Written",
+            "Founding",
+            "Fathers"
+        ],
+        "explanation_why": "Drafting the framework of government.",
+        "audio_url": "assets/audio/2008_q65.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q66",
+        "question_text": "When was the Constitution written?",
+        "acceptable_answers": [
+            "1787"
+        ],
+        "voice_keywords": [
+            "1787"
+        ],
+        "explanation_why": "In Philadelphia.",
+        "audio_url": "assets/audio/2008_q66.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q67",
+        "question_text": "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.",
+        "acceptable_answers": [
+            "James Madison",
+            "Alexander Hamilton",
+            "John Jay",
+            "Publius"
+        ],
+        "voice_keywords": [
+            "Madison",
+            "Hamilton",
+            "Jay"
+        ],
+        "explanation_why": "Advocated for ratification.",
+        "audio_url": "assets/audio/2008_q67.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q68",
+        "question_text": "What is one thing Benjamin Franklin is famous for?",
+        "acceptable_answers": [
+            "U.S. diplomat",
+            "Oldest member of the Constitutional Convention",
+            "First Postmaster General of the United States",
+            "Writer of 'Poor Richard's Almanack'",
+            "Started the first free libraries"
+        ],
+        "voice_keywords": [
+            "Diplomat",
+            "Postmaster",
+            "Libraries"
+        ],
+        "explanation_why": "A Founding Father.",
+        "audio_url": "assets/audio/2008_q68.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q69",
+        "question_text": "Who is the 'Father of Our Country'?",
+        "acceptable_answers": [
+            "George Washington"
+        ],
+        "voice_keywords": [
+            "George",
+            "Washington"
+        ],
+        "explanation_why": "First President and commander of Continental Army.",
+        "audio_url": "assets/audio/2008_q69.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q70",
+        "question_text": "Who was the first President?",
+        "acceptable_answers": [
+            "George Washington"
+        ],
+        "voice_keywords": [
+            "George",
+            "Washington"
+        ],
+        "explanation_why": "Set the precedent for the office.",
+        "audio_url": "assets/audio/2008_q70.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q71",
+        "question_text": "What territory did the United States buy from France in 1803?",
+        "acceptable_answers": [
+            "The Louisiana Territory",
+            "Louisiana"
+        ],
+        "voice_keywords": [
+            "Louisiana"
+        ],
+        "explanation_why": "Doubled the size of the U.S.",
+        "audio_url": "assets/audio/2008_q71.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q72",
+        "question_text": "Name one war fought by the United States in the 1800s.",
+        "acceptable_answers": [
+            "War of 1812",
+            "Mexican-American War",
+            "Civil War",
+            "Spanish-American War"
+        ],
+        "voice_keywords": [
+            "1812",
+            "Civil",
+            "Mexican",
+            "Spanish"
+        ],
+        "explanation_why": "Expansion and conflict.",
+        "audio_url": "assets/audio/2008_q72.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q73",
+        "question_text": "Name the U.S. war between the North and the South.",
+        "acceptable_answers": [
+            "The Civil War",
+            "The War between the States"
+        ],
+        "voice_keywords": [
+            "Civil",
+            "War"
+        ],
+        "explanation_why": "Fought over slavery and states' rights.",
+        "audio_url": "assets/audio/2008_q73.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q74",
+        "question_text": "Name one problem that led to the Civil War.",
+        "acceptable_answers": [
+            "Slavery",
+            "Economic reasons",
+            "States' rights"
+        ],
+        "voice_keywords": [
+            "Slavery",
+            "Economic",
+            "States"
+        ],
+        "explanation_why": "Divisive issues.",
+        "audio_url": "assets/audio/2008_q74.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q75",
+        "question_text": "What was one important thing that Abraham Lincoln did?",
+        "acceptable_answers": [
+            "Freed the slaves (Emancipation Proclamation)",
+            "Saved (or preserved) the Union",
+            "Led the U.S. during the Civil War"
+        ],
+        "voice_keywords": [
+            "Freed",
+            "Slaves",
+            "Union",
+            "Saved"
+        ],
+        "explanation_why": "President during the Civil War.",
+        "audio_url": "assets/audio/2008_q75.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q76",
+        "question_text": "What did the Emancipation Proclamation do?",
+        "acceptable_answers": [
+            "Freed the slaves",
+            "Freed slaves in the Confederacy",
+            "Freed slaves in the Confederate states",
+            "Freed slaves in most Southern states"
+        ],
+        "voice_keywords": [
+            "Freed",
+            "Slaves"
+        ],
+        "explanation_why": "Changed the legal status of enslaved people in the South.",
+        "audio_url": "assets/audio/2008_q76.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q77",
+        "question_text": "What did Susan B. Anthony do?",
+        "acceptable_answers": [
+            "Fought for women's rights",
+            "Fought for civil rights"
+        ],
+        "voice_keywords": [
+            "Women",
+            "Rights",
+            "Civil"
+        ],
+        "explanation_why": "Leader in the suffrage movement.",
+        "audio_url": "assets/audio/2008_q77.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q78",
+        "question_text": "Name one war fought by the United States in the 1900s.",
+        "acceptable_answers": [
+            "World War I",
+            "World War II",
+            "Korean War",
+            "Vietnam War",
+            "(Persian) Gulf War"
+        ],
+        "voice_keywords": [
+            "World",
+            "War",
+            "Korean",
+            "Vietnam",
+            "Gulf"
+        ],
+        "explanation_why": "Global conflicts.",
+        "audio_url": "assets/audio/2008_q78.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q79",
+        "question_text": "Who was President during World War I?",
+        "acceptable_answers": [
+            "Woodrow Wilson"
+        ],
+        "voice_keywords": [
+            "Woodrow",
+            "Wilson"
+        ],
+        "explanation_why": "Led the country through WWI.",
+        "audio_url": "assets/audio/2008_q79.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q80",
+        "question_text": "Who was President during the Great Depression and World War II?",
+        "acceptable_answers": [
+            "Franklin Roosevelt"
+        ],
+        "voice_keywords": [
+            "Franklin",
+            "Roosevelt"
+        ],
+        "explanation_why": "Served four terms.",
+        "audio_url": "assets/audio/2008_q80.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q81",
+        "question_text": "Who did the United States fight in World War II?",
+        "acceptable_answers": [
+            "Japan, Germany, and Italy"
+        ],
+        "voice_keywords": [
+            "Japan",
+            "Germany",
+            "Italy"
+        ],
+        "explanation_why": "The Axis powers.",
+        "audio_url": "assets/audio/2008_q81.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q82",
+        "question_text": "Before he was President, Eisenhower was a general. What war was he in?",
+        "acceptable_answers": [
+            "World War II"
+        ],
+        "voice_keywords": [
+            "World",
+            "War",
+            "II"
+        ],
+        "explanation_why": "Supreme Allied Commander.",
+        "audio_url": "assets/audio/2008_q82.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q83",
+        "question_text": "During the Cold War, what was the main concern of the United States?",
+        "acceptable_answers": [
+            "Communism"
+        ],
+        "voice_keywords": [
+            "Communism"
+        ],
+        "explanation_why": "Geopolitical tension.",
+        "audio_url": "assets/audio/2008_q83.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q84",
+        "question_text": "What movement tried to end racial discrimination?",
+        "acceptable_answers": [
+            "Civil rights (movement)"
+        ],
+        "voice_keywords": [
+            "Civil",
+            "Rights"
+        ],
+        "explanation_why": "Fight for equality.",
+        "audio_url": "assets/audio/2008_q84.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q85",
+        "question_text": "What did Martin Luther King, Jr. do?",
+        "acceptable_answers": [
+            "Fought for civil rights",
+            "Worked for equality for all Americans"
+        ],
+        "voice_keywords": [
+            "Civil",
+            "Rights",
+            "Equality"
+        ],
+        "explanation_why": "Civil rights leader.",
+        "audio_url": "assets/audio/2008_q85.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q86",
+        "question_text": "What major event happened on September 11, 2001, in the United States?",
+        "acceptable_answers": [
+            "Terrorists attacked the United States"
+        ],
+        "voice_keywords": [
+            "Terrorists",
+            "Attacked"
+        ],
+        "explanation_why": "9/11 Attacks.",
+        "audio_url": "assets/audio/2008_q86.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q87",
+        "question_text": "Name one American Indian tribe in the United States.",
+        "acceptable_answers": [
+            "Cherokee",
+            "Navajo",
+            "Sioux",
+            "Chippewa",
+            "Choctaw",
+            "Pueblo",
+            "Apache",
+            "Iroquois",
+            "Creek",
+            "Blackfeet",
+            "Seminole",
+            "Cheyenne",
+            "Arawak",
+            "Shawnee",
+            "Mohegan",
+            "Huron",
+            "Oneida",
+            "Lakota",
+            "Crow",
+            "Teton",
+            "Hopi",
+            "Inuit"
+        ],
+        "voice_keywords": [
+            "Cherokee",
+            "Navajo",
+            "Sioux"
+        ],
+        "explanation_why": "Many tribes exist.",
+        "audio_url": "assets/audio/2008_q87.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q88",
+        "question_text": "Name one of the two longest rivers in the United States.",
+        "acceptable_answers": [
+            "Missouri River",
+            "Mississippi River"
+        ],
+        "voice_keywords": [
+            "Missouri",
+            "Mississippi"
+        ],
+        "explanation_why": "Major waterways.",
+        "audio_url": "assets/audio/2008_q88.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q89",
+        "question_text": "What ocean is on the West Coast of the United States?",
+        "acceptable_answers": [
+            "Pacific Ocean"
+        ],
+        "voice_keywords": [
+            "Pacific"
+        ],
+        "explanation_why": "California, Oregon, Washington border it.",
+        "audio_url": "assets/audio/2008_q89.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q90",
+        "question_text": "What ocean is on the East Coast of the United States?",
+        "acceptable_answers": [
+            "Atlantic Ocean"
+        ],
+        "voice_keywords": [
+            "Atlantic"
+        ],
+        "explanation_why": "Eastern seaboard.",
+        "audio_url": "assets/audio/2008_q90.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q91",
+        "question_text": "Name one U.S. territory.",
+        "acceptable_answers": [
+            "Puerto Rico",
+            "U.S. Virgin Islands",
+            "American Samoa",
+            "Northern Mariana Islands",
+            "Guam"
+        ],
+        "voice_keywords": [
+            "Puerto",
+            "Rico",
+            "Guam"
+        ],
+        "explanation_why": "Non-state jurisdictions.",
+        "audio_url": "assets/audio/2008_q91.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q92",
+        "question_text": "Name one state that borders Canada.",
+        "acceptable_answers": [
+            "Maine",
+            "New Hampshire",
+            "Vermont",
+            "New York",
+            "Pennsylvania",
+            "Ohio",
+            "Michigan",
+            "Minnesota",
+            "North Dakota",
+            "Montana",
+            "Idaho",
+            "Washington",
+            "Alaska"
+        ],
+        "voice_keywords": [
+            "Maine",
+            "New",
+            "York",
+            "Washington"
+        ],
+        "explanation_why": "Northern border.",
+        "audio_url": "assets/audio/2008_q92.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q93",
+        "question_text": "Name one state that borders Mexico.",
+        "acceptable_answers": [
+            "California",
+            "Arizona",
+            "New Mexico",
+            "Texas"
+        ],
+        "voice_keywords": [
+            "California",
+            "Arizona",
+            "Texas"
+        ],
+        "explanation_why": "Southern border.",
+        "audio_url": "assets/audio/2008_q93.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q94",
+        "question_text": "What is the capital of the United States?",
+        "acceptable_answers": [
+            "Washington, D.C."
+        ],
+        "voice_keywords": [
+            "Washington",
+            "D.C."
+        ],
+        "explanation_why": "The federal district.",
+        "audio_url": "assets/audio/2008_q94.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q95",
+        "question_text": "Where is the Statue of Liberty?",
+        "acceptable_answers": [
+            "New York (Harbor)",
+            "Liberty Island"
+        ],
+        "voice_keywords": [
+            "New",
+            "York",
+            "Liberty",
+            "Island"
+        ],
+        "explanation_why": "Symbol of freedom.",
+        "audio_url": "assets/audio/2008_q95.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q96",
+        "question_text": "Why does the flag have 13 stripes?",
+        "acceptable_answers": [
+            "Because there were 13 original colonies",
+            "Because the stripes represent the original colonies"
+        ],
+        "voice_keywords": [
+            "13",
+            "Thirteen",
+            "Original",
+            "Colonies"
+        ],
+        "explanation_why": "Historical representation.",
+        "audio_url": "assets/audio/2008_q96.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q97",
+        "question_text": "Why does the flag have 50 stars?",
+        "acceptable_answers": [
+            "Because there is one star for each state",
+            "Because each star represents a state",
+            "Because there are 50 states"
+        ],
+        "voice_keywords": [
+            "50",
+            "Fifty",
+            "State",
+            "States"
+        ],
+        "explanation_why": "Current union.",
+        "audio_url": "assets/audio/2008_q97.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q98",
+        "question_text": "What is the name of the national anthem?",
+        "acceptable_answers": [
+            "The Star-Spangled Banner"
+        ],
+        "voice_keywords": [
+            "Star",
+            "Spangled",
+            "Banner"
+        ],
+        "explanation_why": "Written by Francis Scott Key.",
+        "audio_url": "assets/audio/2008_q98.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q99",
+        "question_text": "When do we celebrate Independence Day?",
+        "acceptable_answers": [
+            "July 4"
+        ],
+        "voice_keywords": [
+            "July",
+            "4"
+        ],
+        "explanation_why": "Birthday of the USA.",
+        "audio_url": "assets/audio/2008_q99.mp3",
+        "is_premium_content": false
+    },
+    {
+        "id": "2008_q100",
+        "question_text": "Name two national U.S. holidays.",
+        "acceptable_answers": [
+            "New Year's Day",
+            "Martin Luther King, Jr. Day",
+            "Presidents' Day",
+            "Memorial Day",
+            "Independence Day",
+            "Labor Day",
+            "Columbus Day",
+            "Veterans Day",
+            "Thanksgiving",
+            "Christmas"
+        ],
+        "voice_keywords": [
+            "Independence",
+            "Thanksgiving",
+            "Christmas",
+            "Memorial",
+            "Labor"
+        ],
+        "explanation_why": "Federal holidays.",
+        "audio_url": "assets/audio/2008_q100.mp3",
+        "is_premium_content": false
+    }
+]

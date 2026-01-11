@@ -1,0 +1,54 @@
+{
+  "part_12_meanings": [
+    {
+      "term": "Genocide",
+      "definition": "Killing a large group of people usually because of their race or religion.",
+      "triggers": [
+        "killing",
+        "race",
+        "religion",
+        "group",
+        "people"
+      ]
+    },
+    {
+      "term": "Torture",
+      "definition": "To hurt someone badly to get information.",
+      "triggers": [
+        "hurt",
+        "pain",
+        "badly"
+      ]
+    },
+    {
+      "term": "Totalitarian Party",
+      "definition": "A government that has complete control over everything and people have no power.",
+      "triggers": [
+        "control",
+        "complete",
+        "government",
+        "power"
+      ]
+    },
+    {
+      "term": "Oath of Allegiance",
+      "definition": "A promise to be loyal to the United States.",
+      "triggers": [
+        "promise",
+        "loyal",
+        "united states",
+        "us"
+      ]
+    },
+    {
+      "term": "Bear Arms",
+      "definition": "To carry a weapon to protect the country.",
+      "triggers": [
+        "weapon",
+        "gun",
+        "protect",
+        "carry"
+      ]
+    }
+  ]
+}
