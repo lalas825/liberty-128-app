@@ -36,7 +36,7 @@ class OnboardingViewModel extends ChangeNotifier {
       await prefs.setBool('has_seen_onboarding', true);
 
       if (context.mounted) {
-        Navigator.pushReplacementNamed(context, '/home');
+        Navigator.pushReplacementNamed(context, '/login');
       }
     } catch (e) {
       // Handle error implicitly or add error state if needed

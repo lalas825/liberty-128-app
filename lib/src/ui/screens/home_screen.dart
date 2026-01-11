@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'dart:convert';
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../services/stats_service.dart';
 import '../../services/daily_challenge_service.dart';
 import '../../data/models/civics_question_model.dart';
@@ -222,6 +223,16 @@ class _HomeScreenState extends State<HomeScreen> {
             style: GoogleFonts.publicSans(
                 color: federalBlue, fontWeight: FontWeight.bold)),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.logout, color: Colors.blueGrey),
+            tooltip: 'Sign Out',
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              if (mounted) {
+                Navigator.of(context).pushNamedAndRemoveUntil('/login', (route) => false);
+              }
+            },
+          ),
           IconButton(
               icon: Icon(Icons.refresh, color: federalBlue), 
               onPressed: _loadStats)

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "176696682958",
+    "project_id": "citizen128-f0ad8",
+    "storage_bucket": "citizen128-f0ad8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176696682958:android:72508aabcc0e0656a6e39f",
+        "android_client_info": {
+          "package_name": "com.citizen128.citizen128"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8Hu09iCDkkqjhzI5Tv9BM_BWBKDrg17E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
