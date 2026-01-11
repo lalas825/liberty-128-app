@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:liberty_128_app/src/logic/viewmodels/onboarding_viewmodel.dart';
+import 'package:citizen128/src/logic/viewmodels/onboarding_viewmodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {

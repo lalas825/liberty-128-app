@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:liberty_128_app/src/data/models/user_profile_model.dart';
+import 'package:citizen128/src/data/models/user_profile_model.dart';
 
 class OnboardingViewModel extends ChangeNotifier {
   DateTime? _selectedDate;

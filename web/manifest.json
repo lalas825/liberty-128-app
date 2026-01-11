@@ -1,6 +1,6 @@
 {
-    "name": "liberty_128_app",
-    "short_name": "liberty_128_app",
+    "name": "citizen128",
+    "short_name": "citizen128",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

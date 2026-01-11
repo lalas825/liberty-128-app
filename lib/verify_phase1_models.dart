@@ -1,5 +1,5 @@
-import 'package:liberty_128_app/src/data/models/user_profile_model.dart';
-import 'package:liberty_128_app/src/data/seeds/questions_2025_seed.dart';
+import 'package:citizen128/src/data/models/user_profile_model.dart';
+import 'package:citizen128/src/data/seeds/questions_2025_seed.dart';
 
 void main() {
   print('=== verifying PHASE 1 LOGIC ===\n');

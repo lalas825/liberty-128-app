@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:liberty_128_app/src/data/models/civics_question_model.dart';
+import 'package:citizen128/src/data/models/civics_question_model.dart';
 
 void main() {
   test('Verify civics_questions_2025.json parsing', () async {

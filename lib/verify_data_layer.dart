@@ -1,5 +1,5 @@
-import 'package:liberty_128_app/src/data/models/civics_question_model.dart';
-import 'package:liberty_128_app/src/data/repositories/civics_repository.dart';
+import 'package:citizen128/src/data/models/civics_question_model.dart';
+import 'package:citizen128/src/data/repositories/civics_repository.dart';
 
 void main() async {
   print('--- Verifying Data Layer ---');

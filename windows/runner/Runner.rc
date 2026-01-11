@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.liberty128" "\0"
-            VALUE "FileDescription", "liberty_128_app" "\0"
+            VALUE "CompanyName", "com.citizen128" "\0"
+            VALUE "FileDescription", "citizen128" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "liberty_128_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.liberty128. All rights reserved." "\0"
-            VALUE "OriginalFilename", "liberty_128_app.exe" "\0"
-            VALUE "ProductName", "liberty_128_app" "\0"
+            VALUE "InternalName", "citizen128" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 com.citizen128. All rights reserved." "\0"
+            VALUE "OriginalFilename", "citizen128.exe" "\0"
+            VALUE "ProductName", "citizen128" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

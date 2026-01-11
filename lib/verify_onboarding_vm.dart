@@ -1,4 +1,4 @@
-import 'package:liberty_128_app/src/logic/viewmodels/onboarding_viewmodel.dart';
+import 'package:citizen128/src/logic/viewmodels/onboarding_viewmodel.dart';
 
 void main() {
   print('=== Verifying OnboardingViewModel ===\n');

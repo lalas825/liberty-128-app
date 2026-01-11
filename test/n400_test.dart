@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:liberty_128_app/src/ui/screens/home_screen.dart';
-import 'package:liberty_128_app/src/ui/screens/n400_vocab_screen.dart';
+import 'package:citizen128/src/ui/screens/home_screen.dart';
+import 'package:citizen128/src/ui/screens/n400_vocab_screen.dart';
 
 void main() {
   testWidgets('Opens N-400 Vocab Screen and shows intro', (WidgetTester tester) async {

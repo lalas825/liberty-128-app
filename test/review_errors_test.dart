@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:liberty_128_app/src/services/stats_service.dart';
-import 'package:liberty_128_app/src/ui/screens/review_errors_screen.dart';
+import 'package:citizen128/src/services/stats_service.dart';
+import 'package:citizen128/src/ui/screens/review_errors_screen.dart';
 
 void main() {
   testWidgets('ReviewErrorsScreen shows error message when no errors', (WidgetTester tester) async {

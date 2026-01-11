@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:liberty_128_app/src/ui/screens/home_screen.dart';
+import 'package:citizen128/src/ui/screens/home_screen.dart';
 
 void main() {
   testWidgets('Daily Challenge Card shows streaks and state', (WidgetTester tester) async {

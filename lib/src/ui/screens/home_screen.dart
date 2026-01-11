@@ -210,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildDashboard() {
     final Color federalBlue = const Color(0xFF112D50);
-    final Color libertyGreen = const Color(0xFF00C4B4);
+    final Color citizenGreen = const Color(0xFF00C4B4);
     final Color bgLight = const Color(0xFFF8FAFC);
 
     return Scaffold(
@@ -324,7 +324,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             value: _passProbability,
                             strokeWidth: 12,
                             backgroundColor: Colors.grey.shade200,
-                            color: _isPassed ? libertyGreen : (_passProbability > 0 ? Colors.redAccent : Colors.grey)),
+                            color: _isPassed ? citizenGreen : (_passProbability > 0 ? Colors.redAccent : Colors.grey)),
                         Center(
                             child: Text("${(_passProbability * 100).toInt()}%",
                                 style: GoogleFonts.publicSans(
@@ -443,7 +443,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: _isChallengeCompleted ? const Color(0xFFE0F2F1) : const Color(0xFFFFF3E0),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: _isChallengeCompleted ? libertyGreen : Colors.orangeAccent,
+                      color: _isChallengeCompleted ? citizenGreen : Colors.orangeAccent,
                       width: 1.5,
                     ),
                     boxShadow: const [
@@ -454,12 +454,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: _isChallengeCompleted ? libertyGreen.withOpacity(0.2) : Colors.orangeAccent.withOpacity(0.2),
+                        color: _isChallengeCompleted ? citizenGreen.withOpacity(0.2) : Colors.orangeAccent.withOpacity(0.2),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         _isChallengeCompleted ? Icons.check_circle : Icons.local_fire_department,
-                        color: _isChallengeCompleted ? libertyGreen : Colors.deepOrange,
+                        color: _isChallengeCompleted ? citizenGreen : Colors.deepOrange,
                         size: 32,
                       ),
                     ),
