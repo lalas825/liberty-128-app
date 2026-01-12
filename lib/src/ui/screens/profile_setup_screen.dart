@@ -193,7 +193,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                         onTap: _pickImage,
                         child: Container(
                           padding: const EdgeInsets.all(8),
-                          decoration: const BoxDecoration(color: Color(0xFF00C4B4), shape: BoxShape.circle),
+                          decoration: BoxDecoration(color: federalBlue, shape: BoxShape.circle),
                           child: const Icon(Icons.camera_alt, color: Colors.white, size: 20),
                         ),
                       ),
@@ -278,7 +278,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                 child: ElevatedButton(
                   onPressed: _isLoading ? null : _saveProfile,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF00C4B4),
+                    backgroundColor: federalBlue,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
                   child: _isLoading 

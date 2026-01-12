@@ -222,6 +222,9 @@ class _VoicePracticeScreenState extends State<VoicePracticeScreen> {
          
          await _audio.playAnswer(_studyVersion, _currentQuestion!.id, fallbackText, userProvider);
       }
+      
+      // SAVE ERROR FOR REVIEW
+      StatsService.addIncorrect(_currentQuestion!.id);
     }
     
     await Future.delayed(Duration(seconds: isCorrect ? 1 : 4)); 

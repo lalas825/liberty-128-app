@@ -15,9 +15,15 @@ class StudyScreen extends StatefulWidget {
 
 class _StudyScreenState extends State<StudyScreen> {
   List<CivicsQuestion> _questions = [];
+  List<CivicsQuestion> _originalQuestions = []; // For standard order
   bool _isLoading = true;
   int _currentIndex = 0;
   bool _isFlipped = false;
+  bool _isShuffled = false;
+  
+  // Persistence Keys
+  static const String KEY_PROGRESS_2008 = 'study_progress_2008';
+  static const String KEY_PROGRESS_2025 = 'study_progress_2025';
 
   @override
   void initState() {
@@ -36,14 +42,82 @@ class _StudyScreenState extends State<StudyScreen> {
       final String response = await rootBundle.loadString(assetPath);
       final List<dynamic> data = json.decode(response);
       
+      final loadedQuestions = data.map((json) => CivicsQuestion.fromJson(json)).toList();
+      
       setState(() {
-        _questions = data.map((json) => CivicsQuestion.fromJson(json)).toList();
+        _questions = List.from(loadedQuestions);
+        _originalQuestions = List.from(loadedQuestions);
         _isLoading = false;
       });
+      
+      await _loadProgress(is2025);
+      
     } catch (e) {
       debugPrint("Error loading study questions: $e");
       setState(() => _isLoading = false);
     }
+  }
+
+  Future<void> _loadProgress(bool is2025) async {
+     final prefs = await SharedPreferences.getInstance();
+     final key = is2025 ? KEY_PROGRESS_2025 : KEY_PROGRESS_2008;
+     final savedIndex = prefs.getInt(key) ?? 0;
+     
+     if (savedIndex < _questions.length && savedIndex >= 0) {
+        setState(() => _currentIndex = savedIndex);
+     }
+  }
+
+  Future<void> _saveProgress() async {
+    if (_isShuffled) return; // Don't save progress in shuffle mode (optional choice, but standard)
+    
+    final prefs = await SharedPreferences.getInstance();
+    final bool is2025 = prefs.getBool('is_2025_version') ?? true;
+    final key = is2025 ? KEY_PROGRESS_2025 : KEY_PROGRESS_2008;
+    
+    await prefs.setInt(key, _currentIndex);
+  }
+  
+  void _resetProgress() async {
+    setState(() {
+      _currentIndex = 0;
+      _isFlipped = false;
+    });
+    if (!_isShuffled) await _saveProgress();
+    
+    ScaffoldMessenger.of(context).showSnackBar(
+       const SnackBar(content: Text("Progress Reset to Start"), duration: Duration(seconds: 1))
+    );
+  }
+
+  void _toggleShuffle() {
+     setState(() {
+        _isShuffled = !_isShuffled;
+        _isFlipped = false;
+        _currentIndex = 0; // Always start fresh on mode switch for clarity
+        
+        if (_isShuffled) {
+           _questions.shuffle();
+           ScaffoldMessenger.of(context).showSnackBar(
+             const SnackBar(content: Text("Shuffle Mode: ON (Random Order)"), duration: Duration(seconds: 1))
+           );
+        } else {
+           _questions = List.from(_originalQuestions); // Restore order
+           ScaffoldMessenger.of(context).showSnackBar(
+             const SnackBar(content: Text("Standard Order Restored"), duration: Duration(seconds: 1))
+           );
+           // Ideally restore persistence here? 
+           // For now, reset to 0 is safer/simpler ui flow, or re-load persistence.
+           // Let's re-load persistence to be "Smart".
+           _reloadPersistence();
+        }
+     });
+  }
+  
+  void _reloadPersistence() async {
+      final prefs = await SharedPreferences.getInstance();
+      final bool is2025 = prefs.getBool('is_2025_version') ?? true;
+      _loadProgress(is2025);
   }
 
   void _nextCard() {
@@ -52,6 +126,7 @@ class _StudyScreenState extends State<StudyScreen> {
         _currentIndex++;
         _isFlipped = false;
       });
+      _saveProgress();
     }
   }
 
@@ -61,6 +136,7 @@ class _StudyScreenState extends State<StudyScreen> {
         _currentIndex--;
         _isFlipped = false;
       });
+      _saveProgress();
     }
   }
 
@@ -94,6 +170,19 @@ class _StudyScreenState extends State<StudyScreen> {
         elevation: 0,
         centerTitle: true,
         automaticallyImplyLeading: false, // Managed by main nav
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shuffle, color: _isShuffled ? const Color(0xFF112D50) : Colors.grey),
+            onPressed: _toggleShuffle,
+            tooltip: "Toggle Shuffle",
+          ),
+          IconButton(
+            icon: const Icon(Icons.refresh, color: Color(0xFF112D50)),
+            onPressed: _resetProgress,
+            tooltip: "Reset Progress",
+          ),
+          const SizedBox(width: 8),
+        ],
       ),
       body: Column(
         children: [
@@ -153,9 +242,18 @@ class _StudyScreenState extends State<StudyScreen> {
                   color: const Color(0xFF112D50),
                   iconSize: 32,
                 ),
-                Text(
-                  "Tap card to flip", 
-                  style: GoogleFonts.publicSans(color: Colors.grey, fontStyle: FontStyle.italic)
+                ElevatedButton(
+                  onPressed: _flipCard,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF112D50),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                    elevation: 4,
+                  ),
+                  child: Text(
+                    _isFlipped ? "Show Question" : "Show Answer",
+                    style: GoogleFonts.publicSans(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
                 ),
                 IconButton(
                   onPressed: _currentIndex < _questions.length - 1 ? _nextCard : null,

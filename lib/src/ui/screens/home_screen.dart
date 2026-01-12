@@ -12,6 +12,7 @@ import '../../services/daily_challenge_service.dart';
 import '../../data/models/civics_question_model.dart';
 import 'review_errors_screen.dart';
 import 'study_screen.dart';
+import 'podcast_screen.dart';
 import 'profile_screen.dart';
 import 'settings_screen.dart'; // Added
 import 'n400_vocab_screen.dart';
@@ -209,6 +210,21 @@ class _HomeScreenState extends State<HomeScreen> {
           
           const SizedBox(height: 16),
           
+          // Podcast Mode
+          GestureDetector(
+             onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (c) => const PodcastScreen()));
+             },
+             child: _buildLargeActionCard(
+               icon: Icons.headphones,
+               color: Colors.purple, // Distinct color
+               title: "Podcast Mode",
+               subtitle: "Hands-free Audio Study"
+             ),
+          ),
+          
+          const SizedBox(height: 16),
+          
           // Study Mode
           GestureDetector(
              onTap: () {
@@ -289,26 +305,35 @@ class _HomeScreenState extends State<HomeScreen> {
                // Profile Row
                Row(
                   children: [
-                    CircleAvatar(
-                        radius: 24,
-                        backgroundColor: Colors.grey.shade300,
+                    Container(
+                      width: 48, 
+                      height: 48,
+                      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey.shade300),
+                      child: ClipOval(
                         child: photo != null
-                            ? ClipOval(
-                                child: Image.network(
-                                  photo,
-                                  width: 48,
-                                  height: 48,
-                                  fit: BoxFit.cover,
-                                  errorBuilder: (context, error, stackTrace) => Text(
+                            ? Image.network(
+                                photo,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Center(
+                                    child: Text(
                                       name.isNotEmpty ? name[0].toUpperCase() : "U",
                                       style: GoogleFonts.publicSans(fontWeight: FontWeight.bold, color: federalBlue),
                                     ),
-                                ),
+                                  );
+                                },
+                                loadingBuilder: (context, child, loadingProgress) {
+                                   if (loadingProgress == null) return child;
+                                   return const Center(child: SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2)));
+                                },
                               )
-                            : Text(
-                                name.isNotEmpty ? name[0].toUpperCase() : "U",
-                                style: GoogleFonts.publicSans(fontWeight: FontWeight.bold, color: federalBlue),
+                            : Center(
+                                child: Text(
+                                  name.isNotEmpty ? name[0].toUpperCase() : "U",
+                                  style: GoogleFonts.publicSans(fontWeight: FontWeight.bold, color: federalBlue),
+                                ),
                               ),
+                      ),
                     ),
                     const SizedBox(width: 12),
                     Column(

@@ -49,6 +49,9 @@ dependencies:
   flutter_tts: ^4.2.5
   confetti: ^0.8.0
   audioplayers: ^6.5.1
+  just_audio: ^0.9.36
+  audio_service: ^0.18.12
+  audio_session: ^0.1.18
 
 dev_dependencies:
   flutter_test:

@@ -72,6 +72,10 @@ class UserProvider extends ChangeNotifier {
   SharedPreferences? _prefs;
 
   Future<void> updateVersion(String newVersion) async {
+    if (_prefs == null) await _loadPrefs();
+    await _prefs!.setString('study_version', newVersion); // General string
+    await _prefs!.setBool('is_2025_version', newVersion == '2025'); // Boolean for legacy screens
+    
     _studyVersion = newVersion;
     notifyListeners();
     

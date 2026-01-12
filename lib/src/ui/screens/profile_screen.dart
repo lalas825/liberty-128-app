@@ -181,16 +181,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
                          onTap: _pickImage,
                          child: Stack(
                            children: [
-                             CircleAvatar(
-                               radius: 50,
-                               backgroundColor: federalBlue.withOpacity(0.1),
-                               backgroundImage: photo != null ? NetworkImage(photo) : null,
-                               child: photo == null
-                                   ? Text(
-                                       _nameController.text.isNotEmpty ? _nameController.text[0].toUpperCase() : "U",
-                                       style: GoogleFonts.publicSans(fontSize: 40, color: federalBlue, fontWeight: FontWeight.bold),
-                                     )
-                                   : null,
+                             Container(
+                               width: 100,
+                               height: 100,
+                               decoration: BoxDecoration(
+                                 shape: BoxShape.circle,
+                                 color: federalBlue.withOpacity(0.1),
+                               ),
+                               child: ClipOval(
+                                 child: photo != null
+                                     ? Image.network(
+                                         photo,
+                                         fit: BoxFit.cover,
+                                         errorBuilder: (context, error, stackTrace) {
+                                           debugPrint("Profile Image Load Error: $error");
+                                           // Fallback to Initials on Error (e.g., CORS)
+                                           return Center(
+                                             child: Text(
+                                               _nameController.text.isNotEmpty ? _nameController.text[0].toUpperCase() : "U",
+                                               style: GoogleFonts.publicSans(fontSize: 40, color: federalBlue, fontWeight: FontWeight.bold),
+                                             ),
+                                           );
+                                         },
+                                         loadingBuilder: (context, child, loadingProgress) {
+                                           if (loadingProgress == null) return child;
+                                           return Center(child: CircularProgressIndicator(value: loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null));
+                                         },
+                                       )
+                                     : Center(
+                                         child: Text(
+                                           _nameController.text.isNotEmpty ? _nameController.text[0].toUpperCase() : "U",
+                                           style: GoogleFonts.publicSans(fontSize: 40, color: federalBlue, fontWeight: FontWeight.bold),
+                                         ),
+                                       ),
+                               ),
                              ),
                              Positioned(
                                bottom: 0, right: 0,
@@ -268,7 +292,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               Switch(
                                 value: is2025, 
-                                activeColor: const Color(0xFF00C4B4),
+                                activeColor: federalBlue,
                                 onChanged: (val) {
                                   // Toggle
                                   userProvider.updateVersion(val ? '2025' : '2008');
